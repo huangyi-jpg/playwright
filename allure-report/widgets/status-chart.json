@@ -1,0 +1,1 @@
+[{"uid":"c39690af3f1f815a","name":"test_playwright_product[chromium]","time":{"start":1789984508298,"stop":1789984509631,"duration":1333},"status":"passed","severity":"normal"},{"uid":"b54e0b4637a60c8a","name":"test_shangpin_dinggou[chromium]","time":{"start":1789984511031,"stop":1789984511666,"duration":635},"status":"passed","severity":"normal"}]
