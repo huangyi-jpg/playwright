@@ -18,6 +18,18 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+
+      - name: Build and run API (docker)
+        run: |
+          docker build -t my-api-image .
+          docker run -d --name my-api -p 9091:9091 my-api-image
+          for i in {1..60}; do
+            if curl -fsS http://127.0.0.1:9091/health >/dev/null 2>&1; then
+              echo "API ready"
+              break
+            fi
+            sleep 1
+          done
           
       - name: Run Pytest
         run: |
