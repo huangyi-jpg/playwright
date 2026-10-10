@@ -24,7 +24,6 @@ jobs:
           docker build -t my-api-image .
           docker run -d --name my-api -p 9091:9091 my-api-image
 
-          # 等 API ready，必须等到能正常返回 HTTP 200
           for i in {1..60}; do
             if curl -fsS http://127.0.0.1:9091/health >/dev/null 2>&1; then
               echo "API ready"
