@@ -22,4 +22,4 @@ jobs:
 
       - name: Run Pytest
         run: |
-          pytest tests -v --alluredir=allure-results
+          pytest api_test -v --alluredir=allure-results
