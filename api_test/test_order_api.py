@@ -1,6 +1,6 @@
 import requests
 
-ORDER_URL = "http://192.168.124.128:9091/order"
+ORDER_URL = "{BASE_URL}/order"
 #发布商品断言
 def test_create_order(base_headers,proder_paylod):
 
