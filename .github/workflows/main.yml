@@ -1,0 +1,24 @@
+name: Pytest API Automation
+
+on:
+  push:
+    branches: [dev] # 当你推送到 dev 分支时自动触发（如果是 main 分支请修改）
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          
+      - name: Run Pytest
+        run: |
+          pytest api_test -v --alluredir=allure-results
