@@ -1,8 +1,8 @@
 import requests
 
-RORDER_URL = "http://192.168.124.128:9091/cart/add/173"
-LORDER_URL = "http://192.168.124.128:9091/cart/show"
-ORDER_URL = "http://192.168.124.128:9091/cart/commitOrder/172/250"
+RORDER_URL = "{BASE_URL}/cart/add/173"
+LORDER_URL = "{BASE_URL}/cart/show"
+ORDER_URL = "{BASE_URL}/cart/commitOrder/172/250"
 #发布商品断言
 def test_create_order(base_headers):
     #添加商品到购物车
