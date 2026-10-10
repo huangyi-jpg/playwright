@@ -2,19 +2,19 @@ name: Pytest API Automation
 
 on:
   push:
-    branches: [dev] # 当你推送到 dev 分支时自动触发（如果是 main 分支请修改）
+    branches: [dev]
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-          
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
@@ -23,14 +23,19 @@ jobs:
         run: |
           docker build -t my-api-image .
           docker run -d --name my-api -p 9091:9091 my-api-image
+
+          # 等 API ready，必须等到能正常返回 HTTP 200
           for i in {1..60}; do
             if curl -fsS http://127.0.0.1:9091/health >/dev/null 2>&1; then
               echo "API ready"
               break
             fi
+            echo "Waiting for API..."
             sleep 1
           done
-          
+
       - name: Run Pytest
+        env:
+          BASE_URL: http://127.0.0.1:9091
         run: |
           pytest api_test -v --alluredir=allure-results
