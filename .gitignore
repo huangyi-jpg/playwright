@@ -1,7 +1,7 @@
 .idea/
 allure-report/
 allure-results/
-data/
+data_test/
 __pycache__/
 *.pyc
 venv/

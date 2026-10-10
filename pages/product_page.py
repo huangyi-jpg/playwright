@@ -14,7 +14,7 @@ class ProductPage:
         # assert (page.get_by
 
     def gouwu(self):
-        self.page.get_by_text("六号化合物", exact=True).click()
+        self.page.get_by_text("六号化合物", exact=True).first.click()
         self.page.get_by_role("button", name="加入购物车").click()
         self.page.get_by_role("link", name="农产品交易").click()
         self.page.get_by_role("button", name="购物车").click()
